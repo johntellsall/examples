@@ -84,10 +84,13 @@ def print_report(mails):
 
 
 if __name__ == '__main__':
+	# 1) fetch email from Gmail, output to local file
 	if sys.argv[-1] == 'fetch':
 		mail_response = fetch_mail()
 		pickle.dump(obj=mail_response, file=open('mails.pickle', 'wb'))
 
+	# 2) parse local file, output nice report.
+	# This part can be repeated as often as needed.
 	else:
 		mails = pickle.load(file=open('mails.pickle', 'rb'))
 		print_report(mails)
